@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency")
-public class Currency {
+public class Currency implements CurrencyDTO {
    @Id
    @Column(name = "abbreviation", nullable = false)
    private String abbreviation;

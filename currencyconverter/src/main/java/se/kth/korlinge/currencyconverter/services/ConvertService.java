@@ -5,8 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import se.kth.korlinge.currencyconverter.data.Currency;
+import se.kth.korlinge.currencyconverter.data.CurrencyDTO;
 import se.kth.korlinge.currencyconverter.repositories.CurrencyRepository;
 import se.kth.korlinge.currencyconverter.repositories.RateRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 //requires new means a new transaction is started whenever a method in this class is called
@@ -24,5 +28,11 @@ public class ConvertService {
 
    public double convert(Currency from, Currency to, double value) {
       return 0;
+   }
+
+   public List<CurrencyDTO> getCurrencies() {
+      List<CurrencyDTO> currencies = new ArrayList<>();
+      currencyRepository.findAll().forEach(f -> currencies.add(f));
+      return currencies;
    }
 }

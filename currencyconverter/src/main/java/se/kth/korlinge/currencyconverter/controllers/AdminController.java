@@ -12,6 +12,6 @@ public class AdminController {
 
    @GetMapping("/admin")
    public String getAdminPage() {
-      return "HEJADMIN";
+      return "/admin";
    }
 }

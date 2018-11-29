@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+</head>
+<body>
+<h1>Currency Converter</h1>
+<p>Available currencies: </p> <!-- TODO load from server dynamically -->
+<p
+        th:each="currency: ${currencies}"
+        th:utext="${currency.abbreviation} + ', ' + ${currency.name}"
+>No currencies available</p>
+<form th:action="@{/convert}" th:object="${conversion}" method="post">
+    <label>FROM: </label>
+    <select th:field="*{fromCurrency}" name="fromCurrency">
+        <option value="">--</option>
+        <option
+                th:each="currency: ${currencies}"
+                th:value="${currency.abbreviation}"
+                th:utext="${currency.abbreviation}"
+        />
+    </select>
+    <input th:field="*{fromValue}" type="text" />
+    <br />
+    <label>TO: </label>
+    <select th:field="*{toCurrency}" name="toCurrency">
+        <option value="">--</option>
+        <option
+                th:each="currency: ${currencies}"
+                th:value="${currency.abbreviation}"
+                th:utext="${currency.abbreviation}"
+        />
+    </select>
+    <input th:field="*{toValue}" type="text" />
+    <br />
+    <input type="submit" />
+</form>
+</body>
+</html>
