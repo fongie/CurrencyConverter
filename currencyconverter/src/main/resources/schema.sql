@@ -17,6 +17,14 @@ CREATE TABLE IF NOT EXISTS `rate` (
     FOREIGN KEY (`from`) REFERENCES currency(abbreviation),
     FOREIGN KEY (`to`) REFERENCES currency(abbreviation)
     );
+	
+DROP TABLE IF EXISTS `access`;
+CREATE TABLE IF NOT EXISTS `access` (
+	id INTEGER AUTO_INCREMENT PRIMARY KEY,
+	rate INTEGER NOT NULL,
+	
+	FOREIGN KEY (rate) REFERENCES rate(id)
+);
 
 INSERT INTO currency(abbreviation, name) VALUES 
 ('SEK', 'Svenska kronor'),

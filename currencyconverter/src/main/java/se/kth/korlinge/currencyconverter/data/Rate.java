@@ -13,14 +13,10 @@ public class Rate {
 
    @NotNull
    @ManyToOne
-   @JoinColumn(name = "abbreviation")
-   @Column(name = "from")
    private Currency from;
 
    @NotNull
    @ManyToOne
-   @JoinColumn(name = "abbreviation")
-   @Column(name = "to")
    private Currency to;
 
    @Column(name = "value")
