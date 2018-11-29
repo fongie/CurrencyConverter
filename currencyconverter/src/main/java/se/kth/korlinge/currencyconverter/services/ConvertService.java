@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import se.kth.korlinge.currencyconverter.data.Currency;
+import se.kth.korlinge.currencyconverter.controllers.ConversionResult;
 import se.kth.korlinge.currencyconverter.data.CurrencyDTO;
+import se.kth.korlinge.currencyconverter.data.RateDTO;
 import se.kth.korlinge.currencyconverter.repositories.CurrencyRepository;
 import se.kth.korlinge.currencyconverter.repositories.RateRepository;
+import se.kth.korlinge.currencyconverter.controllers.ConversionRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,23 @@ public class ConvertService {
    @Autowired
    private CurrencyRepository currencyRepository;
 
-   public double convert(Currency from, Currency to, double value) {
-      return 0;
+   public ConversionResult convert(ConversionRequest conversionRequest) {
+      String from = conversionRequest.getFromCurrency();
+      String to = conversionRequest.getToCurrency();
+      RateDTO rate = rateRepository.findRateByFromAndTo(currencyRepository.findById(from).get(), currencyRepository.findById(to).get());
+
+      int valueToConvert = conversionRequest.getValue();
+      double conversionRate = rate.getValue();
+      double convertedValue = valueToConvert * conversionRate;
+      ConversionResult result = new ConversionResult(
+            conversionRequest.getFromCurrency(),
+            conversionRequest.getToCurrency(),
+            valueToConvert,
+            convertedValue,
+            conversionRate
+      );
+
+      return result;
    }
 
    public List<CurrencyDTO> getCurrencies() {

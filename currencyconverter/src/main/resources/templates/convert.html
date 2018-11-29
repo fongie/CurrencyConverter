@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+</head>
+<body>
+<h1>Currency Converter</h1>
+
+<p>Available currencies: </p>
+<p
+        th:each="currency: ${currencies}"
+        th:utext="${currency.abbreviation} + ', ' + ${currency.name}"
+>No currencies available</p>
+
+<form
+        th:action="@{/convert}"
+        th:object="${conversionRequest}"
+        method="post"
+>
+    <label>Convert: </label>
+    <input
+            th:field="*{value}"
+            type="text"
+    />
+    <span
+            class="error"
+            th:if="${#fields.hasErrors('value')}"
+            th:errors="*{value}"
+    >
+        Invalid value
+    </span>
+    <br />
+    <label>FROM: </label>
+    <select
+            th:field="*{fromCurrency}"
+            name="fromCurrency"
+    >
+        <option
+                th:each="currency: ${currencies}"
+                th:value="${currency.abbreviation}"
+                th:utext="${currency.abbreviation}"
+        />
+    </select>
+    <br />
+    <label>TO: </label>
+    <select
+            th:field="*{toCurrency}"
+            name="toCurrency"
+    >
+        <option
+                th:each="currency: ${currencies}"
+                th:value="${currency.abbreviation}"
+                th:utext="${currency.abbreviation}"
+        />
+    </select>
+    <br />
+    <input type="submit" />
+</form>
+
+<div
+    th:if="${conversionResult}"
+>
+<p>Result:</p>
+    <p
+            th:utext="
+                        'From ' +
+                        ${conversionResult.fromValue} + ' ' +
+                        ${conversionResult.from} +
+                        ' to ' +
+                        ${conversionResult.to} + ' ' +
+                        ${conversionResult.toValue} +
+                        ' at a rate of ' + ${conversionResult.rate} + ' : 1'
+                     "
+    >
+        Result
+    </p>
+</div>
+
+</body>
+</html>
