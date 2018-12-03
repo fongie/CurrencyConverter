@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import se.kth.korlinge.currencyconverter.controllers.ConversionResult;
+import se.kth.korlinge.currencyconverter.data.Access;
 import se.kth.korlinge.currencyconverter.data.CurrencyDTO;
 import se.kth.korlinge.currencyconverter.data.RateDTO;
+import se.kth.korlinge.currencyconverter.repositories.AccessRepository;
 import se.kth.korlinge.currencyconverter.repositories.CurrencyRepository;
 import se.kth.korlinge.currencyconverter.repositories.RateRepository;
 import se.kth.korlinge.currencyconverter.controllers.ConversionRequest;
@@ -28,6 +30,9 @@ public class ConvertService {
    @Autowired
    private CurrencyRepository currencyRepository;
 
+   @Autowired
+   AccessRepository accessRepository;
+
    public ConversionResult convert(ConversionRequest conversionRequest) {
       String from = conversionRequest.getFromCurrency();
       String to = conversionRequest.getToCurrency();
@@ -44,6 +49,7 @@ public class ConvertService {
             conversionRate
       );
 
+      accessRepository.save(new Access(rate)); //log accesses for admin site
       return result;
    }
 

@@ -19,8 +19,8 @@ public class Access {
 
    }
 
-   public Access(Rate rate) {
-      this.rate = rate;
+   public Access(RateDTO rate) {
+      this.rate = (Rate) rate;
    }
 
    public int getId() {

@@ -30,6 +30,8 @@ public class Rate implements RateDTO {
 
    }
 
+
+
    public int getId() {
       return id;
    }
