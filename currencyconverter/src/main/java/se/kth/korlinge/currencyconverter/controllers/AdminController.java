@@ -11,6 +11,9 @@ import se.kth.korlinge.currencyconverter.services.ConvertService;
 
 import javax.validation.Valid;
 
+/**
+ * Entry point for HTTP requests concerning the admin interface.
+ */
 @Controller
 public class AdminController {
    @Autowired
@@ -18,6 +21,12 @@ public class AdminController {
    @Autowired
    ConvertService convertService;
 
+   /**
+    * Get the admin interface.
+    * @param model
+    * @param rateChangeRequest
+    * @return
+    */
    @GetMapping("/admin")
    public String getAdminPage(Model model, RateChangeRequest rateChangeRequest) {
       model.addAttribute("currencies",convertService.getCurrencies());
@@ -26,15 +35,21 @@ public class AdminController {
       return "/admin";
    }
 
+   /**
+    * Post a new request to change a conversion rate
+    * @param rateChangeRequest
+    * @param result
+    * @param model
+    * @return
+    */
    @PostMapping("/admin")
    public String changeRate(@Valid RateChangeRequest rateChangeRequest, BindingResult result, Model model) {
       if (result.hasErrors()) {
-         result.getAllErrors().forEach(System.out::println);
+         result.getAllErrors().forEach(System.err::println); //used to have problems here, might as well keep
          return getAdminPage(model, rateChangeRequest);
       }
       adminService.changeRate(rateChangeRequest);
       model.addAttribute("result", true);
       return getAdminPage(model, rateChangeRequest);
-      //return "/admin";
    }
 }

@@ -1,5 +1,8 @@
 package se.kth.korlinge.currencyconverter.controllers;
 
+/**
+ * Represents the result of a currency conversion.
+ */
 public class ConversionResult {
    private String from;
    private String to;

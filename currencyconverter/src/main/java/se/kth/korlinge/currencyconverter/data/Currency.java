@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Represents a Currency row in the database.
+ */
 @Entity
 @Table(name = "currency")
 public class Currency implements CurrencyDTO {

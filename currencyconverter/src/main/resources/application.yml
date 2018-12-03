@@ -8,18 +8,6 @@ spring:
   jpa:
     hibernate:
           ddl-auto: none
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${EMAIL_USERNAME}
-    password: ${EMAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
 ---
 server:
   servlet:

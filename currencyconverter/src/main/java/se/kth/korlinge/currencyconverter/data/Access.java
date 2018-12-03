@@ -3,6 +3,9 @@ package se.kth.korlinge.currencyconverter.data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Represents an Access row in the database.
+ */
 @Entity
 @Table(name = "access")
 public class Access {

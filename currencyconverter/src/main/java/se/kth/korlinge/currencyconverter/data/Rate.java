@@ -3,6 +3,9 @@ package se.kth.korlinge.currencyconverter.data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Represents a Rate row in the database.
+ */
 @Entity
 @Table(name = "rate")
 public class Rate implements RateDTO {

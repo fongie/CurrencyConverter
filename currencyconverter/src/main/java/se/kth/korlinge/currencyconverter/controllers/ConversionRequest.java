@@ -4,6 +4,9 @@ package se.kth.korlinge.currencyconverter.controllers;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+/**
+ * Represents a request made to make a currency conversion.
+ */
 @UniqueToAndFrom
 public class ConversionRequest {
     private String fromCurrency;

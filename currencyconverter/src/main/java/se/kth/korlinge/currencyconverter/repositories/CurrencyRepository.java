@@ -6,6 +6,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import se.kth.korlinge.currencyconverter.data.Currency;
 
+/**
+ * Interface for database operations regarding Currencies
+ */
 @Repository
 @Transactional(propagation = Propagation.MANDATORY) //these methods can only be called in an ongoing transaction, that means, by service classes annotated this transactional
 public interface CurrencyRepository extends CrudRepository<Currency, String> {

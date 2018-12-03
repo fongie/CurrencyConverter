@@ -9,8 +9,11 @@ import se.kth.korlinge.currencyconverter.data.Currency;
 import se.kth.korlinge.currencyconverter.data.Rate;
 import se.kth.korlinge.currencyconverter.data.RateDTO;
 
+/**
+ * Interface for database operations regarding Rates
+ */
 @Repository
-@Transactional(propagation = Propagation.MANDATORY) //these methods can only be called in an ongoing transaction, that means, by service classes annotated this transactional
+@Transactional(propagation = Propagation.MANDATORY) //these methods can only be called in an ongoing transaction, that means, by service classes annotated as transactional
 public interface RateRepository extends CrudRepository<Rate, Integer> {
 
    RateDTO findRateByFromAndTo(Currency from, Currency to);

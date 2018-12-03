@@ -2,10 +2,11 @@ package se.kth.korlinge.currencyconverter.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableTransactionManagement
-//@EnableWebMvc //this class can create stuff handling web requests, view resolving, etc
+/**
+ * Config class for the spring application. Defaults were sufficient for everything except to enable transaction management.
+ */
+@EnableTransactionManagement //needed to use transactional in other classes
 @Configuration
 public class Config {
 }

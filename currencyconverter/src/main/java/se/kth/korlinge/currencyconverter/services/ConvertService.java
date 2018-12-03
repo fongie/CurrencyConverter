@@ -17,10 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Handles logic needed by the currency converter page.
+ * Would be called "ConversionService" if that was not a pre-defined bean in Spring
+ */
 //requires new means a new transaction is started whenever a method in this class is called
-//this means that this class sort of does transaction handling
+//this means that this class does transaction handling
 //transactions autostart on method call and auto end on method end
-//rollbackFor = Exception.class can be used to rollback (not commit) transactions for all exceptions, default is only runtimeexceptions
+//rollbackFor = Exception.class can be used to rollback (not commit) transactions for all exceptions, default is only runtimeexceptions,
+   //          but since we don't throw any exceptions on our own, we only need it for runtimeexceptions as default
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 @Service
 public class ConvertService {
@@ -33,6 +38,11 @@ public class ConvertService {
    @Autowired
    AccessRepository accessRepository;
 
+   /**
+    * Make a currency conversion
+    * @param conversionRequest
+    * @return A ConversionResult
+    */
    public ConversionResult convert(ConversionRequest conversionRequest) {
       String from = conversionRequest.getFromCurrency();
       String to = conversionRequest.getToCurrency();
@@ -53,6 +63,10 @@ public class ConvertService {
       return result;
    }
 
+   /**
+    * Return all available currencies
+    * @return
+    */
    public List<CurrencyDTO> getCurrencies() {
       List<CurrencyDTO> currencies = new ArrayList<>();
       currencyRepository.findAll().forEach(f -> currencies.add(f));

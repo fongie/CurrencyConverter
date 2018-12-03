@@ -3,6 +3,9 @@ package se.kth.korlinge.currencyconverter.controllers;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+/**
+ * Represents a request to change a currency exchange rate
+ */
 public class RateChangeRequest {
 
    private int rateId;

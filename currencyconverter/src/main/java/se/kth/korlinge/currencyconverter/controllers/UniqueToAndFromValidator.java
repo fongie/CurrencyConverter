@@ -5,6 +5,9 @@ import org.springframework.beans.BeanWrapperImpl;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Implementation of the UniqueToAndFrom annotation
+ */
 public class UniqueToAndFromValidator implements ConstraintValidator<UniqueToAndFrom, ConversionRequest> {
 
    @Override
