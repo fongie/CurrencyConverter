@@ -1,4 +1,4 @@
-package se.kth.korlinge.currencyconverter.controllers;
+package se.kth.korlinge.currencyconverter.presentation.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

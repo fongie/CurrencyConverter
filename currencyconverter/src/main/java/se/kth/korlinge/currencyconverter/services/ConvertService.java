@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import se.kth.korlinge.currencyconverter.controllers.ConversionResult;
+import se.kth.korlinge.currencyconverter.presentation.conversion.ConversionResult;
 import se.kth.korlinge.currencyconverter.data.Access;
 import se.kth.korlinge.currencyconverter.data.CurrencyDTO;
 import se.kth.korlinge.currencyconverter.data.RateDTO;
 import se.kth.korlinge.currencyconverter.repositories.AccessRepository;
 import se.kth.korlinge.currencyconverter.repositories.CurrencyRepository;
 import se.kth.korlinge.currencyconverter.repositories.RateRepository;
-import se.kth.korlinge.currencyconverter.controllers.ConversionRequest;
+import se.kth.korlinge.currencyconverter.presentation.conversion.ConversionRequest;
 
 import java.util.ArrayList;
 import java.util.List;

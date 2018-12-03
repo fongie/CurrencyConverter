@@ -1,4 +1,4 @@
-package se.kth.korlinge.currencyconverter.controllers;
+package se.kth.korlinge.currencyconverter.presentation.admin;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;

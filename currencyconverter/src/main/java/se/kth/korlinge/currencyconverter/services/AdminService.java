@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import se.kth.korlinge.currencyconverter.controllers.RateChangeRequest;
+import se.kth.korlinge.currencyconverter.presentation.admin.RateChangeRequest;
 import se.kth.korlinge.currencyconverter.data.Rate;
 import se.kth.korlinge.currencyconverter.data.RateDTO;
 import se.kth.korlinge.currencyconverter.repositories.AccessRepository;
-import se.kth.korlinge.currencyconverter.repositories.CurrencyRepository;
 import se.kth.korlinge.currencyconverter.repositories.RateRepository;
 
 import java.util.ArrayList;

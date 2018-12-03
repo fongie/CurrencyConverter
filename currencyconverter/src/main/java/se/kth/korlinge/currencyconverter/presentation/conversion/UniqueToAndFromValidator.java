@@ -1,4 +1,4 @@
-package se.kth.korlinge.currencyconverter.controllers;
+package se.kth.korlinge.currencyconverter.presentation.conversion;
 
 import org.springframework.beans.BeanWrapperImpl;
 

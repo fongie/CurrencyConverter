@@ -1,4 +1,4 @@
-package se.kth.korlinge.currencyconverter.controllers;
+package se.kth.korlinge.currencyconverter.presentation.conversion;
 
 /**
  * Represents the result of a currency conversion.
